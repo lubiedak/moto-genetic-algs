@@ -1,8 +1,8 @@
 package org.gen.algs.moto.ag;
 
-public interface GeneMapper {
+public interface MapableToGene {
   int mapToGene();
   void mapFromGene(int gene);
-  int value(int gene);
+  int value();
   
 }

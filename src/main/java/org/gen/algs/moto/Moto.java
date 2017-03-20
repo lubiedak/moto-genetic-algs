@@ -1,8 +1,8 @@
 package org.gen.algs.moto;
 
-import org.gen.algs.moto.ag.GeneMapper;
+import org.gen.algs.moto.ag.MapableToGene;
 
-public class Moto implements GeneMapper{
+public class Moto implements MapableToGene{
   
   int power;
   int ccm;
@@ -57,7 +57,7 @@ public class Moto implements GeneMapper{
     
   }
   @Override
-  public int value(int gene) {
+  public int value() {
     return power/4 + ccm/10 - price/1000 - weight/10 - gasUsage + equipmentQuality/2 + (canMyWifeUseIt?5:0) + (canMyWifeUseIt?3:0);    
   }
   
