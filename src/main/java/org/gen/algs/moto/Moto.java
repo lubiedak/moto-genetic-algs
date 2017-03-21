@@ -13,7 +13,9 @@ public class Moto implements MapableToGene{
   boolean canMyWifeUseIt;
   boolean doesMyWifeLikeItsDesign;
   
-  
+  public Moto(){
+    
+  }
   
   public Moto(int power, int ccm, int price, int weight, int gasUsage, int equipmentQuality,
       boolean doesMyWifeLikeItsDesign) {
@@ -46,12 +48,12 @@ public class Moto implements MapableToGene{
   @Override
   public void mapFromGene(int gene) {
     int mask = 15;
-    power = (gene & mask) * 100;
-    ccm = ((gene & mask<<4) >> 4) * 1000;
-    price = ((gene & mask<<8) >> 8) * 40000;
-    weight = ((gene & mask<<12) >> 12) * 220;
-    gasUsage = ((gene & mask<<16) >> 16) * 10;
-    equipmentQuality = ((gene & mask<<20) >> 20) * 15;
+    power = (gene & mask) * 100/15;
+    ccm = ((gene & mask<<4) >> 4) * 1000/15;
+    price = ((gene & mask<<8) >> 8) * 40000/15;
+    weight = ((gene & mask<<12) >> 12) * 220/15;
+    gasUsage = ((gene & mask<<16) >> 16) * 10/15;
+    equipmentQuality = ((gene & mask<<20) >> 20);
     canMyWifeUseIt = ((gene & mask<<24) >> 24) == 15;
     doesMyWifeLikeItsDesign = ((gene & mask<<28) >> 28) == 15;
     
@@ -59,6 +61,13 @@ public class Moto implements MapableToGene{
   @Override
   public int value() {
     return power/4 + ccm/10 - price/1000 - weight/10 - gasUsage + equipmentQuality/2 + (canMyWifeUseIt?5:0) + (canMyWifeUseIt?3:0);    
+  }
+
+  @Override
+  public String toString() {
+    return "Moto [power=" + power + ", ccm=" + ccm + ", price=" + price + ", weight=" + weight + ", gasUsage="
+        + gasUsage + ", equipmentQuality=" + equipmentQuality + ", canMyWifeUseIt=" + canMyWifeUseIt
+        + ", doesMyWifeLikeItsDesign=" + doesMyWifeLikeItsDesign + "]";
   }
   
   
