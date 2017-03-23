@@ -10,9 +10,9 @@ public class Population { // should be generic
   List<Phenotype> nextGeneration;
   MapableToGene mapableToGene;
 
-  // Temporary constants
-  final int populationSize = 21; // == 7*6 / 2
-  final int counterMax = 7;
+  // Temporary constants TODO: Should be configurable
+  final int populationSize = 20; // == 7*6 / 2
+  final int counterMax = 5;
 
   public Population(MapableToGene mapableToGene) {
     super();
@@ -43,7 +43,6 @@ public class Population { // should be generic
 
   private void chooseBestAndCrossOver() {
     nextGeneration = new LinkedList<Phenotype>();
-
     for(int i = 0; i < counterMax-1; ++i){
       
       for(int j = i+1; j < counterMax; ++j){
