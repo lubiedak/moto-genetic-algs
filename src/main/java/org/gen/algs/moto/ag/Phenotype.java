@@ -1,16 +1,19 @@
 package org.gen.algs.moto.ag;
 
-public class Phenotype {
-  //int chromosomeSize;
-  //int nOfChromosomes;
+import org.gen.algs.moto.Moto;
+
+public class Phenotype implements Comparable<Phenotype> {
 
   int gene;
+  int value;
 
-  
-  
+  // TODO - should be configurable
+  static MapableToGene geneToIndividualMapper = new Moto();
+
   public Phenotype(int gene) {
     super();
     this.gene = gene;
+    calculateValue();
   }
 
   public void crossover(Phenotype p, int k) {
@@ -21,6 +24,8 @@ public class Phenotype {
     gene = (geneA & maskA) + (geneB & maskB);
     p.gene = (geneB & maskA) + (geneA & maskB);
 
+    calculateValue();
+    p.calculateValue();
   }
 
   public void mutate(Phenotype p, int k) {
@@ -29,7 +34,20 @@ public class Phenotype {
 
   @Override
   public String toString() {
-    return "Phenotype [gene=" + String.format("%8s", Integer.toBinaryString(gene)).replace(' ', '0') + "]";
+    return "Phenotype [" + " gene=" + String.format("%32s", Integer.toBinaryString(gene)).replace(' ', '0')
+        + ", value=" + value + "]";
+  }
+  
+  public String toStringAsMappedObject(){
+    try {
+      MapableToGene m = geneToIndividualMapper.getClass().newInstance();
+      m.mapFromGene(gene);
+      return m.toString();
+    } catch (InstantiationException | IllegalAccessException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    return "";
   }
 
   @Override
@@ -50,6 +68,14 @@ public class Phenotype {
       return false;
     return true;
   }
-  
-  
+
+  @Override
+  public int compareTo(Phenotype p) {
+    return p.value - value;
+  }
+
+  private void calculateValue() {
+    geneToIndividualMapper.mapFromGene(gene);
+    value = geneToIndividualMapper.value();
+  }
 }

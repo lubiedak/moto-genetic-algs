@@ -8,6 +8,8 @@ public class Main {
     // TODO Auto-generated method stub
     Population p = new Population(new Moto());
     p.createPopulation();
+    System.out.println("0:" + p);
+    
     p.nextGeneration();
     System.out.println("1:" + p);
     
@@ -23,7 +25,7 @@ public class Main {
     p.nextGeneration();
     System.out.println("5:" + p);
     
-    System.out.println(p.mapToMoto());
+    System.out.println("Best moto:" + p.getBest().toStringAsMappedObject());
   }
 
 }

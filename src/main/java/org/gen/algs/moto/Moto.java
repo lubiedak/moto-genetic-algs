@@ -54,8 +54,8 @@ public class Moto implements MapableToGene{
     weight = ((gene & mask<<12) >> 12) * 220/15;
     gasUsage = ((gene & mask<<16) >> 16) * 10/15;
     equipmentQuality = ((gene & mask<<20) >> 20);
-    canMyWifeUseIt = ((gene & mask<<24) >> 24) == 15;
-    doesMyWifeLikeItsDesign = ((gene & mask<<28) >> 28) == 15;
+    canMyWifeUseIt = ((gene & mask<<24) >> 24) != 0;
+    doesMyWifeLikeItsDesign = ((gene & mask<<28) >> 28) != 0;
     
   }
   @Override
