@@ -1,6 +1,7 @@
 package org.gen.algs.moto.ag;
 
 import org.gen.algs.moto.Moto;
+import org.gen.algs.moto.PerfectHusband;
 
 public class Phenotype implements Comparable<Phenotype> {
 
@@ -8,7 +9,7 @@ public class Phenotype implements Comparable<Phenotype> {
   int value;
 
   // TODO - should be configurable
-  static MapableToGene geneToIndividualMapper = new Moto();
+  static MapableToGene geneToIndividualMapper = new PerfectHusband();
 
   public Phenotype(int gene) {
     super();
