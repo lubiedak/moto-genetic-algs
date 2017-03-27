@@ -9,23 +9,25 @@ public class Main {
     Population p = new Population(new Moto());
     p.createPopulation();
     System.out.println("0:" + p);
+    System.out.println("Worst:" + p.getWorst().toStringAsMappedObject());
     
     p.nextGeneration();
-    System.out.println("1:" + p);
+    System.out.println("\n1:" + p);
+    System.out.println("Worst:" + p.getWorst().toStringAsMappedObject());
     
     p.nextGeneration();
-    System.out.println("2:" + p);
-    
+    System.out.println("\n2:" + p);
+    System.out.println("Worst:" + p.getWorst().toStringAsMappedObject());
     p.nextGeneration();
-    System.out.println("3:" + p);
-    
+    System.out.println("\n3:" + p);
+    System.out.println("Worst:" + p.getWorst().toStringAsMappedObject());
     p.nextGeneration();
-    System.out.println("4:" + p);
-    
+    System.out.println("\n4:" + p);
+    System.out.println("Worst:" + p.getWorst().toStringAsMappedObject());
     p.nextGeneration();
-    System.out.println("5:" + p);
+    System.out.println("\n5:" + p);
     
-    System.out.println("Best moto:" + p.getBest().toStringAsMappedObject());
+    System.out.println("Best:" + p.getBest().toStringAsMappedObject());
   }
 
 }

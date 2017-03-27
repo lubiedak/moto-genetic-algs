@@ -28,6 +28,11 @@ public class HusbandAttribute {
   public int getnOfBits() {
     return nOfBits;
   }
+
+  @Override
+  public String toString() {
+    return "HA [" + name + ", " + value + "]";
+  }
   
   
 }

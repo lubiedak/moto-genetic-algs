@@ -23,7 +23,7 @@ public class Population { // should be generic
 
   public void createPopulation() {
     for (int i = 0; i < populationSize; ++i) {
-      int gene = ThreadLocalRandom.current().nextInt(0, Integer.MAX_VALUE);
+      int gene = ThreadLocalRandom.current().nextInt(Integer.MIN_VALUE, Integer.MAX_VALUE);
       Phenotype p = new Phenotype(gene);
       population.add(p);
     }
@@ -33,6 +33,10 @@ public class Population { // should be generic
   
   public Phenotype getBest(){
     return population.get(0);
+  }
+  
+  public Phenotype getWorst(){
+    return population.get(populationSize-1);
   }
 
   public void nextGeneration() {

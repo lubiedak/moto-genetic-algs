@@ -36,7 +36,7 @@ public class PerfectHusband implements MapableToGene{
 		int bitsShift = 0;
 		for(HusbandAttribute attr : attributes){
 			int mask = ((int)Math.pow(2.0, attr.getnOfBits())-1) << bitsShift;
-			attr.setValue(mask&gene >> bitsShift);
+			attr.setValue(Math.abs((mask&gene) >> bitsShift));
 			bitsShift += attr.getnOfBits();
 			
 		}
@@ -49,8 +49,8 @@ public class PerfectHusband implements MapableToGene{
 		int earnings = getValueByAttributeName("earnings");
 		value += earnings < 1000 ? -100 : (int)Math.sqrt(earnings);
 		value += getValueByAttributeName("iq")-95;
-		value += getValueByAttributeName("emotionl intelligence")-95;
-		value -= Math.pow(getValueByAttributeName("addictions") * 2.0, 3);
+		value += getValueByAttributeName("emotional intelligence")-95;
+		value -= Math.pow(getValueByAttributeName("addictons") * 2.0, 3);
 		value += getValueByAttributeName("attractive")*30;
 		value += getValueByAttributeName("having a motorocycle")*50;
 
@@ -58,6 +58,13 @@ public class PerfectHusband implements MapableToGene{
 		return value;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return "PerfectHusband [attributes=" + attributes + "]";
+	}
+
 	private int getValueByAttributeName(String name){
 		return attributes.stream().filter( a -> a.getName().equals(name) ).findFirst().get().getValue();
 	}
