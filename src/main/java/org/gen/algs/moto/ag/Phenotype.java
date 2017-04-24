@@ -16,6 +16,11 @@ public class Phenotype implements Comparable<Phenotype> {
     this.gene = gene;
     calculateValue();
   }
+  
+  public Phenotype(Phenotype p) {
+    this.gene = p.gene;
+    calculateValue();
+  }
 
   public void crossover(Phenotype p, int k) {
     int geneA = gene;

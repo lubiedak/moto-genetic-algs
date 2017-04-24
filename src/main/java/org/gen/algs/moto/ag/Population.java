@@ -54,10 +54,10 @@ public class Population { // should be generic
   private void chooseBestAndCrossOver() {
     nextGeneration = new LinkedList<Phenotype>();
     for(int i = 0; i < counterMax-1; ++i){
+      Phenotype phenotypeA = new Phenotype(population.get(i));
       
       for(int j = i+1; j < counterMax; ++j){
-        Phenotype phenotypeA = population.get(i);
-        Phenotype phenotypeB = population.get(j);
+        Phenotype phenotypeB = new Phenotype(population.get(j));
         
         phenotypeA.crossover(phenotypeB, ThreadLocalRandom.current().nextInt(1, 31));
         //phenotypeA.crossover(phenotypeB, findBetterCrossoverPoint());
