@@ -1,5 +1,8 @@
 package org.gen.algs.moto;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.gen.algs.moto.ag.MapableToGene;
 
 public class Moto implements MapableToGene{
@@ -68,6 +71,11 @@ public class Moto implements MapableToGene{
     return "Moto [power=" + power + ", ccm=" + ccm + ", price=" + price + ", weight=" + weight + ", gasUsage="
         + gasUsage + ", equipmentQuality=" + equipmentQuality + ", canMyWifeUseIt=" + canMyWifeUseIt
         + ", doesMyWifeLikeItsDesign=" + doesMyWifeLikeItsDesign + "]";
+  }
+
+  @Override
+  public List<Integer> bestPlacesToCrossover() {
+    return Arrays.asList(4, 8, 12, 16, 20, 24, 28);
   }
   
   

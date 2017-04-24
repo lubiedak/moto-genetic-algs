@@ -1,7 +1,7 @@
 package org.gen.algs.moto.ag;
 
-import org.gen.algs.moto.Moto;
-import org.gen.algs.moto.PerfectHusband;
+import org.gen.algs.husband.PerfectHusband;
+
 
 public class Phenotype implements Comparable<Phenotype> {
 
@@ -21,7 +21,7 @@ public class Phenotype implements Comparable<Phenotype> {
     int geneA = gene;
     int geneB = p.gene;
     int maskA = ~(~0 << k);
-    int maskB = (~0 << k);
+    int maskB = ~maskA;
     gene = (geneA & maskA) + (geneB & maskB);
     p.gene = (geneB & maskA) + (geneA & maskB);
 
@@ -29,14 +29,15 @@ public class Phenotype implements Comparable<Phenotype> {
     p.calculateValue();
   }
 
-  public void mutate(Phenotype p, int k) {
-
+  public void mutate(int k) {
+    gene = gene ^ (1 << k);
   }
 
   @Override
   public String toString() {
-    return "Phenotype [" + " gene=" + String.format("%32s", Integer.toBinaryString(gene)).replace(' ', '0')
-        + ", value=" + value + "]";
+    return "" + value;
+    //return "Phenotype [" + " gene=" + String.format("%32s", Integer.toBinaryString(gene)).replace(' ', '0')
+    //    + ", value=" + value + "]";
   }
   
   public String toStringAsMappedObject(){
